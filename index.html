@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BDH House</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo"><img src="assets/logo.png" alt="BDH House" width="120"></div>
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#apropos">À propos</a>
+    <a href="#candidater">Candidater</a>
+  </nav>
+  <button onclick="document.getElementById('candidater').scrollIntoView();">Candidater</button>
+</header>
+<section id="accueil">
+  <h1>Bienvenue à BDH House</h1>
+  <p>Rejoins l’aventure et lance ta carrière !</p>
+  <button onclick="document.getElementById('candidater').scrollIntoView();">Candidater</button>
+</section>
+<section id="apropos">
+  <h2>À propos</h2>
+  <p>La BDH House est un concept unique créé par [Ton Nom].</p>
+  <p>Après le succès de la première saison, nous revenons pour une Saison 2 encore plus grandiose !</p>
+  <p>Tu as du talent ? Tu rêves de percer sur les réseaux ? C'est ton moment !</p>
+  <div class="team">
+    <div class="team-member">
+      <img src="assets/photo1.jpg" alt="Nom Prod">
+      <p>Nom Prod</p>
+      <p>@reseau</p>
+    </div>
+    <div class="team-member">
+      <img src="assets/photo2.jpg" alt="Nom Prod">
+      <p>Nom Prod</p>
+      <p>@reseau</p>
+    </div>
+  </div>
+</section>
+<section id="candidater">
+  <h2>Candidater</h2>
+  <form id="formCandidature" action="https://formspree.io/f/yourFormID" method="POST" enctype="multipart/form-data">
+    <div class="tab">
+      <h3>Infos personnelles</h3>
+      <div class="form-group"><label>Nom :</label><input type="text" name="nom" required></div>
+      <div class="form-group"><label>Prénom :</label><input type="text" name="prenom" required></div>
+      <div class="form-group"><label>E-mail :</label><input type="email" name="_replyto" required></div>
+      <div class="form-group"><label>WhatsApp :</label><input type="text" name="whatsapp"></div>
+      <div class="form-group"><label>Âge :</label><input type="number" name="age"></div>
+      <div class="form-group"><label>Ville :</label><input type="text" name="ville"></div>
+      <div class="form-group">
+        <label>Sexe :</label>
+        <select name="sexe">
+          <option value="">--Choisir--</option>
+          <option value="homme">Homme</option>
+          <option value="femme">Femme</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="passeport" value="Oui" id="passeport">
+        <label for="passeport">J’ai un passeport valide ou en cours de création</label>
+      </div>
+      <div class="form-group"><label>Lien TikTok :</label><input type="text" name="tiktok"></div>
+      <div class="form-group"><label>Lien Instagram :</label><input type="text" name="instagram"></div>
+      <button type="button" class="next" onclick="nextPrev(1)">Suivant →</button>
+    </div>
+    <div class="tab">
+      <h3>Présentation</h3>
+      <div class="form-group">
+        <label>Ta présentation (max 500 caractères) :</label>
+        <textarea name="presentation" rows="5" maxlength="500" required></textarea>
+      </div>
+      <button type="button" class="prev" onclick="nextPrev(-1)">← Retour</button>
+      <button type="button" class="next" onclick="nextPrev(1)">Suivant →</button>
+    </div>
+    <div class="tab">
+      <h3>Médias</h3>
+      <div class="form-group">
+        <label>Vos photos (5 max) :</label>
+        <input type="file" name="photos[]" accept="image/*" multiple onchange="previewFiles('photos',5)">
+        <div id="preview-photos" class="preview"></div>
+      </div>
+      <div class="form-group">
+        <label>Vos vidéos (5 max) :</label>
+        <input type="file" name="videos[]" accept="video/*" multiple onchange="previewFiles('videos',5)">
+        <div id="preview-videos" class="preview"></div>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="consentement" required>
+        <label>J’accepte que mes données soient utilisées pour le traitement de ma candidature conformément à la politique de confidentialité.</label>
+      </div>
+      <button type="button" class="prev" onclick="nextPrev(-1)">← Retour</button>
+      <button type="submit">Envoyer ma candidature</button>
+    </div>
+  </form>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
