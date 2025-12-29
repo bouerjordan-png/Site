@@ -1,0 +1,5 @@
+let currentTab = 0;
+showTab(currentTab);
+function showTab(n){ let x = document.getElementsByClassName("tab"); x[n].style.display = "block"; }
+function nextPrev(n){ let x = document.getElementsByClassName("tab"); x[currentTab].style.display="none"; currentTab += n; if(currentTab>=x.length){ document.getElementById("formCandidature").submit(); return false; } showTab(currentTab); }
+function previewFiles(type,maxFiles){ const input = document.querySelector(`input[name='${type}[]']`); const preview = document.getElementById(`preview-${type}`); preview.innerHTML=''; const files = Array.from(input.files).slice(0,maxFiles); files.forEach(file=>{ if(type==='photos'){ const img = document.createElement('img'); img.src=URL.createObjectURL(file); preview.appendChild(img); } else { const video=document.createElement('video'); video.src=URL.createObjectURL(file); video.controls=true; preview.appendChild(video); } });}
